@@ -16,14 +16,23 @@ public class ManagerData  {
 
     private void loadUserData()
     {
-        string json = ((TextAsset)Resources.Load("data/users")).text;
+        //users from file (boring)
+        //string json = ((TextAsset)Resources.Load("data/users")).text;
+        //string jsonNew = "{\"users\":" + Regex.Replace(json, @"\s+", "") + "}";
+        //List<UserJson> usersJson = JsonUtility.FromJson<Users>(jsonNew).users;
+        //foreach (UserJson user in usersJson)
+        //{
+        //    User newUser = new User(user.id, user.userName, user.userLikes);
+        //    _users.Add(newUser);
+        //}
 
-        string jsonNew = "{\"users\":" + Regex.Replace(json, @"\s+", "") + "}";
-        List<UserJson> usersJson = JsonUtility.FromJson<Users>(jsonNew).users;
-
-        foreach (UserJson user in usersJson)
+        //random user generated
+        string userNameRandom;
+        for (int i = 1; i < 5000; i++)
         {
-            User newUser = new User(user.id, user.userName, user.userLikes);
+            userNameRandom = Utils.RandomString(UnityEngine.Random.Range(5, 10));
+            User newUser = new User(i, userNameRandom, UnityEngine.Random.Range(10, 1000));
+
             _users.Add(newUser);
         }
 
@@ -53,7 +62,7 @@ public class UserJson
 
 #endregion
 
-public class User
+public struct User
 {
     private int _id;
     private string _userName;

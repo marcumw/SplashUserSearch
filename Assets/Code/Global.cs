@@ -11,6 +11,10 @@ public class Global : MonoBehaviour {
 
     public static Global instance;
 
+    public Canvas canvas { get { return _canvas; } }
+    public ManagerData managerData { get { return _managerData; } }
+    public ManagerUsers managerUsers { get { return _managerUsers; } }
+
     // Use this for initialization
     private void Awake()
     {
@@ -33,8 +37,8 @@ public class Global : MonoBehaviour {
 	
 	}
 
-    public Canvas canvas { get { return _canvas; } }
-    public ManagerData managerData { get {  return _managerData; } }
+
+
     public Tweener onDelayedCall(float duration, TweenCallback onComplete)
     {
         float start = 1;

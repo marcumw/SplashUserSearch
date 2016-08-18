@@ -23,8 +23,6 @@ public sealed class GuiText {
         set { _height = value; }
     }
 
-    private Vector2 _localPosition;
-
     private Vector2 _sizeDelta;
 
     public string text
@@ -37,7 +35,8 @@ public sealed class GuiText {
         }
     }
 
-    public GuiText(Transform parentTransform, string name, string text, int fontSize, string color = "ffffff", FontStyle style = FontStyle.Normal)
+    public GuiText(Transform parentTransform, string name, string text, int fontSize, string color = "ffffff", 
+                            FontStyle style = FontStyle.Normal, TextAnchor anchor = TextAnchor.MiddleLeft)
     {
         //set up progress text
         _go = new GameObject();
@@ -51,8 +50,8 @@ public sealed class GuiText {
         _guiText.fontStyle = style;
         _guiText.fontSize = fontSize;
         _guiText.color = Utils.HexToColor(color);
- 
-        _guiText.alignment = TextAnchor.MiddleCenter;
+
+        _guiText.alignment = anchor;
         _guiText.horizontalOverflow = HorizontalWrapMode.Overflow;
         _guiText.verticalOverflow = VerticalWrapMode.Overflow;
         _guiText.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
