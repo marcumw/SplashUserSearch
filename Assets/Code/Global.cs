@@ -4,21 +4,22 @@ using DG.Tweening;
 
 public class Global : MonoBehaviour {
 
-    private UserSearch _userSearch;
+    public static Global instance;
+
+    private Canvas _canvas;
+    private SearchBar _userSearch;
     private ManagerData _managerData;
     private ManagerUsers _managerUsers;
-    private Canvas _canvas;
-
-    public static Global instance;
+    private ManagerTouch _managerTouch;
 
     public Canvas canvas { get { return _canvas; } }
     public ManagerData managerData { get { return _managerData; } }
     public ManagerUsers managerUsers { get { return _managerUsers; } }
+    public ManagerTouch managerTouch { get { return _managerTouch; } }
 
     // Use this for initialization
     private void Awake()
     {
-
         instance = this;
     }
 
@@ -27,14 +28,16 @@ public class Global : MonoBehaviour {
 
         _canvas = GameObject.FindObjectOfType<Canvas>();
 
-        _userSearch = new UserSearch();
         _managerData = new ManagerData();
         _managerUsers = new ManagerUsers();
-	}
+        _managerTouch = new ManagerTouch();
+        _userSearch = new SearchBar();
+    }
 	
-	// Update is called once per frame
+
 	private void Update () {
-	
+
+        _managerTouch.update();
 	}
 
 
