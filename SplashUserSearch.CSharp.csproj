@@ -105,6 +105,49 @@
     <None Include="Assets\Plugins\DOTween\DOTween50.xml" />
     <None Include="Assets\Plugins\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\Plugins\DOTween\readme.txt" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\app.info" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\globalgamemanagers" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\globalgamemanagers.assets" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\level0" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\Mono\etc\mono\1.0\machine.config" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\Mono\etc\mono\2.0\Browsers\Compat.browser" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\Mono\etc\mono\2.0\machine.config" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\Mono\etc\mono\2.0\settings.map" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\Mono\etc\mono\2.0\web.config" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\Mono\etc\mono\browscap.ini" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\Mono\etc\mono\config" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\resources.assets" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\resources.assets.resS" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\Resources\unity default resources" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\Resources\unity_builtin_extra" />
+    <None Include="Exe_for_pc\SplashUserSearch_Data\sharedassets0.assets" />
+    <None Include="SplashUserSearch.unitypackage" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Exe_for_pc\SplashUserSearch.exe" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\Assembly-CSharp-firstpass.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\Assembly-CSharp.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\DOTween.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\DOTween43.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\DOTween46.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\DOTween50.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\Mono.Security.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\mscorlib.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\System.Core.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\System.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\TouchScript.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\UnityEngine.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\UnityEngine.dll.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\UnityEngine.Networking.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\UnityEngine.UI.dll" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Managed\UnityEngine.xml" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Mono\etc\mono\1.0\DefaultWsdlHelpGenerator.aspx" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Mono\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Mono\etc\mono\mconfig\config.xml" />
+    <Content Include="Exe_for_pc\SplashUserSearch_Data\Mono\mono.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
