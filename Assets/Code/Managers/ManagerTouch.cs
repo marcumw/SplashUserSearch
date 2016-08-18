@@ -227,14 +227,10 @@ public sealed class ManagerTouch
         _xDeltaSmooth = Mathf.SmoothDamp(_xDeltaSmooth, _xDelta, ref _xVelocityDelta, _smoothTime);
         _yDeltaSmooth = Mathf.SmoothDamp(_yDeltaSmooth, _yDelta, ref _yVelocityDelta, _smoothTime);
 
-        //Global._managerCityBuilder.smoothTowerMove(_xDeltaSmooth, _yDeltaSmooth);
-
-        Global.instance.managerUsers.scroll(_yDeltaSmooth);
+        Global.instance.ManagerUsers.scroll(_yDeltaSmooth);
 
         if (!_isSmoothing)
             _isSmoothing = true;
-
-        
     }
 
     public void resetTouchVars()

@@ -7,6 +7,7 @@ using DG.Tweening;
 
 public class ManagerUsers {
 
+    #region variables
     private List<User> _currUsersList;
     private float _currUserListHeight;
 
@@ -14,7 +15,9 @@ public class ManagerUsers {
     private GameObject _go;
     private RectTransform _rt;
 
-    private int _countUserPool = 20;
+    private bool _tweening = false;
+
+    private int _countUsersToReturn = 10;
 
     private float _targetInitY;
 
@@ -22,12 +25,15 @@ public class ManagerUsers {
 
     private List<Texture2D> _avatars;
 
+    private UserInfo _userInfo;
+    #endregion
+
     public ManagerUsers()
     {
         _go = new GameObject();
         _go.name = "Users";
 
-        _go.transform.SetParent(Global.instance.canvas.transform);
+        _go.transform.SetParent(Global.instance.Canvas.transform);
 
         _targetInitY = Screen.height * .3f;
         _targetAnchorPos = new Vector2(0, _targetInitY);
@@ -37,9 +43,16 @@ public class ManagerUsers {
 
         _currUsersList = new List<User>();
 
+        _userInfo = new UserInfo();
+
         loadAvatars();
         createGuiUserPool();
         checkIfUserDataFetchComplete();
+    }
+
+    public void toggle(bool value)
+    {
+        _go.SetActive(value);
     }
 
     private void loadAvatars()
@@ -54,7 +67,7 @@ public class ManagerUsers {
 
     private void checkIfUserDataFetchComplete()
     {
-        if (Global.instance.managerData.Complete)
+        if (Global.instance.ManagerData.Complete)
         {
 
         }
@@ -74,7 +87,7 @@ public class ManagerUsers {
 
         User dummyUser = new User(0, "user", 0);
   
-        for (int i = 0; i < _countUserPool; i++)
+        for (int i = 0; i < _countUsersToReturn; i++)
         {
             GuiUser guiUser = new GuiUser(dummyUser, getAvatarAsync(), _go.transform);
             spacerY = guiUser.SizeDelta.y * .25f;
@@ -88,11 +101,40 @@ public class ManagerUsers {
         }
     }
 
+    //the avatar probably should be separate async call to user.avatarUrl ???
+    //there is no reason to store binary data with every User object
     private Texture2D getAvatarAsync()
     {
-        //the avatar probably should be separate async call to user.avatarUrl ???
-        //there is no reason to store binary with every User object
         return _avatars[UnityEngine.Random.Range(0, _avatars.Count)];
+    }
+
+    public void onUserClicked(GuiUser guiUser)
+    {
+        _userInfo.update(guiUser);
+
+        toggleUserInfo(true);
+    }
+
+    public void onUserInfoBackButtonClicked()
+    {
+        toggleUserInfo(false);
+    }
+
+    private void toggleUserInfo(bool value)
+    {
+        if (value)
+        {
+            Global.instance.SearchBar.toggle(false);
+            Global.instance.ManagerUsers.toggle(false);
+            _userInfo.toggle(true);
+  
+        }
+        else
+        {
+            Global.instance.SearchBar.toggle(true);
+            Global.instance.ManagerUsers.toggle(true);
+            _userInfo.toggle(false);
+        }
     }
 
     public void getUsersByAlpha(string currAlpha)
@@ -101,35 +143,29 @@ public class ManagerUsers {
         GuiUsersToggleAll(false);
 
         if (currAlpha == "")
+            return;
+
+        _currUsersList = Global.instance.ManagerData.Users.Where(
+                        u => u.UserName.StartsWith(currAlpha, StringComparison.OrdinalIgnoreCase))
+                        .OrderByDescending(u2 => u2.UserLikes).ToList();
+
+        _currUserListHeight = 0;
+
+        if (_currUsersList.Count > 0)
         {
-
-        }
-        else
-        {
-            _currUsersList = Global.instance.managerData.Users.Where(
-                            u => u.UserName.StartsWith(currAlpha, StringComparison.OrdinalIgnoreCase))
-                            .OrderByDescending(u2 => u2.UserLikes).ToList();
-
-            _currUserListHeight = 0;
-
-            if (_currUsersList.Count > 0)
+            for (int i = 0; i < _guiUsersPool.Count; i++)
             {
-                for (int i = 0; i < _guiUsersPool.Count; i++)
-                {
-                    GuiUser.Update(_guiUsersPool[i], getAvatarAsync(), _currUsersList[i]);
-                    GuiUser.ToggleGo(true, _guiUsersPool[i]);
+                GuiUser.Update(_guiUsersPool[i], getAvatarAsync(), _currUsersList[i]);
+                GuiUser.ToggleGo(true, _guiUsersPool[i]);
 
-                    if (i == _currUsersList.Count - 1)
-                        break;
+                if (i == _currUsersList.Count - 1)
+                    break;
 
-                    _currUserListHeight += Screen.height * .1f;
-                }
+                _currUserListHeight += Screen.height * .085f;
             }
-
         }
     }
 
-    private bool _tweening = false;
     public void scroll(float ySmoothDelta)
     {
         if (_tweening)
@@ -165,7 +201,7 @@ public class ManagerUsers {
     private void onScrollTweenComplete()
     {
         _tweening = false;
-        Global.instance.managerTouch.resetTouchVars();
+        Global.instance.ManagerTouch.resetTouchVars();
     }
 
     private void GuiUsersToggleAll(bool toggle)

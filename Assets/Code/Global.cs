@@ -7,15 +7,16 @@ public class Global : MonoBehaviour {
     public static Global instance;
 
     private Canvas _canvas;
-    private SearchBar _userSearch;
+    private SearchBar _searchBar;
     private ManagerData _managerData;
     private ManagerUsers _managerUsers;
     private ManagerTouch _managerTouch;
 
-    public Canvas canvas { get { return _canvas; } }
-    public ManagerData managerData { get { return _managerData; } }
-    public ManagerUsers managerUsers { get { return _managerUsers; } }
-    public ManagerTouch managerTouch { get { return _managerTouch; } }
+    public Canvas Canvas { get { return _canvas; } }
+    public SearchBar SearchBar { get { return _searchBar; } }
+    public ManagerData ManagerData { get { return _managerData; } }
+    public ManagerUsers ManagerUsers { get { return _managerUsers; } }
+    public ManagerTouch ManagerTouch { get { return _managerTouch; } }
 
     // Use this for initialization
     private void Awake()
@@ -31,7 +32,7 @@ public class Global : MonoBehaviour {
         _managerData = new ManagerData();
         _managerUsers = new ManagerUsers();
         _managerTouch = new ManagerTouch();
-        _userSearch = new SearchBar();
+        _searchBar = new SearchBar();
     }
 	
 

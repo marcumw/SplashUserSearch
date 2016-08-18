@@ -36,7 +36,7 @@ public sealed class GuiText {
     }
 
     public GuiText(Transform parentTransform, string name, string text, int fontSize, string color = "ffffff", 
-                            FontStyle style = FontStyle.Normal, TextAnchor anchor = TextAnchor.MiddleLeft)
+                            FontStyle style = FontStyle.Normal, TextAnchor anchor = TextAnchor.MiddleLeft, HorizontalWrapMode wrapMode = HorizontalWrapMode.Overflow)
     {
         //set up progress text
         _go = new GameObject();
@@ -52,7 +52,7 @@ public sealed class GuiText {
         _guiText.color = Utils.HexToColor(color);
 
         _guiText.alignment = anchor;
-        _guiText.horizontalOverflow = HorizontalWrapMode.Overflow;
+        _guiText.horizontalOverflow = wrapMode;
         _guiText.verticalOverflow = VerticalWrapMode.Overflow;
         _guiText.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
         _guiText.rectTransform.sizeDelta = new Vector2(_guiText.preferredWidth, fontSize);

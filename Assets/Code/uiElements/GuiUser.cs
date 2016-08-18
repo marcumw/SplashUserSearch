@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class GuiUser {
 
     private User _user;
+    public User user { get { return _user; } }
+
     private GameObject _go;
 
     private RectTransform _rt;
@@ -15,6 +17,7 @@ public class GuiUser {
     private Image _image;
     private Sprite _sprite;
     private Texture2D _textureAvatar;
+    public Texture2D textureAvatar { get { return _textureAvatar; } set { _textureAvatar = value; } }
 
     private static Texture2D _textureAdd;
 
@@ -29,6 +32,9 @@ public class GuiUser {
         _go = new GameObject();
         _go.name = "GuiUserPool";
         _go.transform.SetParent(parent);
+
+        Button buttonMain = _go.AddComponent<Button>();
+        buttonMain.onClick.AddListener(delegate { Global.instance.ManagerUsers.onUserClicked(this); });
 
         _rt = _go.AddComponent<RectTransform>();
 
@@ -100,9 +106,12 @@ public class GuiUser {
 
     public static void Update(GuiUser guiUser, Texture2D textureAvatar, User user)
     {
+        guiUser._user = user;
         guiUser._go.name = user.UserName;
         guiUser._gtUserName.guiText.text = user.UserName;
         guiUser._gtUserLikes.guiText.text = user.UserLikes.ToString() + " LIKES";
+
+        guiUser.textureAvatar = textureAvatar;
 
         guiUser._sprite = Sprite.Create(textureAvatar, new Rect(0, 0, textureAvatar.width, textureAvatar.height), new Vector2(0.5f, 0.5f));
         guiUser._image.sprite = guiUser._sprite;
