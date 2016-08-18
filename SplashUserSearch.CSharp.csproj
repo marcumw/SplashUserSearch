@@ -105,10 +105,6 @@
     <None Include="Assets\Plugins\DOTween\DOTween50.xml" />
     <None Include="Assets\Plugins\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\Plugins\DOTween\readme.txt" />
-    <None Include="SplashUserSearch.unitypackage" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SplashUserSearch.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
