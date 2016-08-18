@@ -61,7 +61,7 @@ public sealed class GuiInputField
         _gtPlaceholder.guiText.horizontalOverflow = HorizontalWrapMode.Overflow;
 
         Vector2 targetPlaceholder = new Vector2(-Screen.width / 2 + _gtPlaceholder.Width / 2 + _gtPlaceholder.Height * 1.75f, 0);
-        _gtPlaceholder.SetPosition(targetPlaceholder.x, targetPlaceholder.y);
+        _gtPlaceholder.SetPosition(targetPlaceholder);
 
 
         //---------------
@@ -74,7 +74,7 @@ public sealed class GuiInputField
         _gt.guiText.rectTransform.sizeDelta = new Vector2(_sizeDelta.x, _gt.guiText.preferredHeight);
 
         Vector2 targetInput = new Vector2(_gt.Height * 1.75f, 0);
-        _gt.SetPosition(targetInput.x, 0);
+        _gt.SetPosition(new Vector2(targetInput.x, 0));
 
         if (_textureBackground == null)
         {

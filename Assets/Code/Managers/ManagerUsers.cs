@@ -35,7 +35,7 @@ public class ManagerUsers {
 
         _go.transform.SetParent(Global.instance.Canvas.transform);
 
-        _targetInitY = Screen.height * .3f;
+        _targetInitY = Screen.height * .34f;
         _targetAnchorPos = new Vector2(0, _targetInitY);
 
         _rt = _go.AddComponent<RectTransform>();
@@ -101,6 +101,7 @@ public class ManagerUsers {
         }
     }
 
+    //Not a real async call...just a future suggestion
     //the avatar probably should be separate async call to user.avatarUrl ???
     //there is no reason to store binary data with every User object
     private Texture2D getAvatarAsync()
@@ -145,9 +146,7 @@ public class ManagerUsers {
         if (currAlpha == "")
             return;
 
-        _currUsersList = Global.instance.ManagerData.Users.Where(
-                        u => u.UserName.StartsWith(currAlpha, StringComparison.OrdinalIgnoreCase))
-                        .OrderByDescending(u2 => u2.UserLikes).ToList();
+        _currUsersList = Global.instance.ManagerData.getUsersByAlpha(currAlpha);
 
         _currUserListHeight = 0;
 

@@ -69,7 +69,7 @@ public class GuiUser {
         _gtUserName.guiText.rectTransform.sizeDelta = new Vector2(_sizeDelta.x, _gtUserName.guiText.preferredHeight);
 
         Vector2 targetName = new Vector2(_image.rectTransform.sizeDelta.x * .8f, _gtUserName.Height * .25f);
-        _gtUserName.SetPosition(targetName.x, targetName.y);
+        _gtUserName.SetPosition(targetName);
 
 
         //set up likes
@@ -79,7 +79,7 @@ public class GuiUser {
         _gtUserLikes.guiText.rectTransform.sizeDelta = new Vector2(_sizeDelta.x, _gtUserLikes.guiText.preferredHeight);
 
         Vector2 targetLikes = new Vector2(_image.rectTransform.sizeDelta.x * .8f, -_gtUserName.Height * .65f);
-        _gtUserLikes.SetPosition(targetLikes.x, targetLikes.y);
+        _gtUserLikes.SetPosition(targetLikes);
 
 
         ////set up add button
@@ -119,7 +119,6 @@ public class GuiUser {
 
     public static void ToggleGo(bool toggle, GuiUser guiUser)
     {
-        //guiUser._go.GetComponent<Canvas>().enabled = toggle;
         guiUser._go.SetActive(toggle);
     }
 

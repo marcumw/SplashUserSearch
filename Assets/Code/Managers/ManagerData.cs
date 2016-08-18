@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 public class ManagerData  {
 
@@ -26,7 +27,7 @@ public class ManagerData  {
         //    _users.Add(newUser);
         //}
 
-        //random user generated
+        //generate 5000 random users
         string userNameRandom;
         for (int i = 1; i < 5000; i++)
         {
@@ -39,7 +40,12 @@ public class ManagerData  {
         _complete = true;
     }
 
-    public bool Complete { get { return _complete; } }
+    public List<User> getUsersByAlpha(string currAlpha)
+    {
+        //async call to web service here????
+        return _users.Where(u => u.UserName.StartsWith(currAlpha, StringComparison.OrdinalIgnoreCase))
+                        .OrderByDescending(u2 => u2.UserLikes).ToList();
+    }
 
-    public List<User> Users { get { return _users; } }
+    public bool Complete { get { return _complete; } }
 }
